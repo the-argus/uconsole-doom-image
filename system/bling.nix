@@ -4,7 +4,5 @@
 
   environment.systemPackages = with pkgs; [
     neofetch
-    tmatrix
-    cmatrix
   ];
 }
