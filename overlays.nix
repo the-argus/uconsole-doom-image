@@ -26,14 +26,18 @@
         version = super.linuxKernel.kernels.${packageName}.version;
       in
         override super.linuxKernel.kernels {
-          ${packageName} = super.linuxKernel.manualConfig {
-            stdenv = super.gccStdenv;
-            inherit src version;
-            modDirVersion = "${version}-${super.lib.strings.toUpper super.localConfig.hostname}-xanmod1";
-            inherit (super) lib;
-            configfile = super.localPackages.kernelconfig;
-            allowImportFromDerivation = true;
-          };
+          ${packageName} =
+            (super.linuxKernel.manualConfig {
+              stdenv = super.gccStdenv;
+              inherit src version;
+              modDirVersion = "${version}-${super.lib.strings.toUpper super.localConfig.hostname}-xanmod1";
+              inherit (super) lib;
+              configfile = super.localPackages.kernelconfig;
+              allowImportFromDerivation = true;
+            })
+            .overrideAttrs (oa: {
+              nativeBuildInputs = (oa.nativeBuildInputs or []) ++ [super.lz4];
+            });
         };
     };
   })
