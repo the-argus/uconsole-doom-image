@@ -1,9 +1,11 @@
 {
   pkgs,
+  localConfig,
   lib,
-  hasNetwork,
   ...
-}: {
+}: let
+  inherit (localConfig) hasNetwork;
+in {
   environment.systemPackages = with pkgs;
     [
       # always good to have

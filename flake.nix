@@ -25,22 +25,27 @@
         libc = "musl";
         config = "riscv64-unknown-linux-musl";
       };
-      overlays = [
-        # everything in the packages dir is provided in pkgs.localPackages
-        (_: super: rec {
-          localPackages = super.callPackage ./packages {};
-          glibcLocales = localPackages.dummy;
-        })
-      ];
+      overlays = import ./overlays.nix;
     };
   in {
     systemdMinimal = pkgs.systemdMinimal;
+
+    important = pkgs.linkFarm "important" [
+      {
+        path = "${pkgs.llvm}";
+        name = "llvm";
+      }
+      {
+        path = "${pkgs.linux}";
+        name = "linux";
+      }
+    ];
 
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {
         system = hostSystem;
         inherit pkgs;
-        specialArgs = import ./config.nix;
+        specialArgs.localConfig = import ./config.nix;
         modules = [
           ./system
           nixos-hardware.nixosModules.raspberry-pi-4

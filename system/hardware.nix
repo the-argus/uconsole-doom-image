@@ -1,11 +1,16 @@
 {
-  archname,
+  localConfig,
+  lib,
   modulesPath,
   ...
-}: {
+}: let
+  inherit (localConfig) archname;
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+
+  boot.supportedFilesystems = lib.mkForce ["ext4" "vfat"];
 
   # nix.settings.system-features = [
   #   "nixos-test"

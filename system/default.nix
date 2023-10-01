@@ -1,12 +1,10 @@
 {
   pkgs,
   lib,
-  initialPassword,
-  username,
-  shellSettings,
-  hasNetwork,
+  localConfig,
   ...
 }: let
+  inherit (localConfig) shellSettings hasNetwork username initialPassword;
   usesZsh = shellSettings.using == shellSettings.shells.zsh;
   usesBash = shellSettings.using == shellSettings.shells.bash;
 in {
