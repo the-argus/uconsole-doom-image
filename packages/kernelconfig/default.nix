@@ -59,9 +59,11 @@ in
     CONFIG_SYSVIPC=y
     CONFIG_SYSVIPC_SYSCTL=y
     CONFIG_SYSVIPC_COMPAT=y
+    # CONFIG_POSIX_MQUEUE is not set
     # CONFIG_WATCH_QUEUE is not set
     CONFIG_CROSS_MEMORY_ATTACH=y
     # CONFIG_USELIB is not set
+    # CONFIG_AUDIT is not set
     CONFIG_HAVE_ARCH_AUDITSYSCALL=y
 
     #
@@ -104,6 +106,7 @@ in
     CONFIG_CLOCKSOURCE_WATCHDOG_MAX_SKEW_US=125
     # end of Timers subsystem
 
+    CONFIG_BPF=y
     CONFIG_HAVE_EBPF_JIT=y
     CONFIG_ARCH_WANT_DEFAULT_BPF_JIT=y
 
@@ -111,6 +114,7 @@ in
     # BPF subsystem
     #
     # CONFIG_BPF_SYSCALL is not set
+    # CONFIG_BPF_JIT is not set
     # end of BPF subsystem
 
     CONFIG_PREEMPT_BUILD=y
@@ -129,6 +133,7 @@ in
     # CONFIG_IRQ_TIME_ACCOUNTING is not set
     CONFIG_BSD_PROCESS_ACCT=y
     # CONFIG_BSD_PROCESS_ACCT_V3 is not set
+    # CONFIG_TASKSTATS is not set
     # CONFIG_PSI is not set
     # end of CPU/Task time and stats accounting
 
@@ -163,7 +168,20 @@ in
     CONFIG_GCC11_NO_ARRAY_BOUNDS=y
     CONFIG_CC_NO_ARRAY_BOUNDS=y
     CONFIG_ARCH_SUPPORTS_INT128=y
-    # CONFIG_CGROUPS is not set
+    CONFIG_CGROUPS=y
+    # CONFIG_CGROUP_FAVOR_DYNMODS is not set
+    # CONFIG_MEMCG is not set
+    # CONFIG_BLK_CGROUP is not set
+    # CONFIG_CGROUP_SCHED is not set
+    # CONFIG_CGROUP_PIDS is not set
+    # CONFIG_CGROUP_RDMA is not set
+    # CONFIG_CGROUP_FREEZER is not set
+    # CONFIG_CGROUP_HUGETLB is not set
+    # CONFIG_CGROUP_DEVICE is not set
+    # CONFIG_CGROUP_CPUACCT is not set
+    # CONFIG_CGROUP_PERF is not set
+    # CONFIG_CGROUP_MISC is not set
+    # CONFIG_CGROUP_DEBUG is not set
     # CONFIG_NAMESPACES is not set
     # CONFIG_CHECKPOINT_RESTORE is not set
     # CONFIG_SCHED_AUTOGROUP is not set
@@ -606,6 +624,8 @@ in
     CONFIG_HAVE_ARCH_SECCOMP=y
     CONFIG_HAVE_ARCH_SECCOMP_FILTER=y
     CONFIG_SECCOMP=y
+    CONFIG_SECCOMP_FILTER=y
+    # CONFIG_SECCOMP_CACHE_DEBUG is not set
     CONFIG_HAVE_ARCH_STACKLEAK=y
     CONFIG_HAVE_STACKPROTECTOR=y
     CONFIG_STACKPROTECTOR=y
@@ -863,7 +883,65 @@ in
     # end of Data Access Monitoring
     # end of Memory Management options
 
-    # CONFIG_NET is not set
+    CONFIG_NET=y
+
+    #
+    # Networking options
+    #
+    # CONFIG_PACKET is not set
+    CONFIG_UNIX=y
+    CONFIG_UNIX_SCM=y
+    CONFIG_AF_UNIX_OOB=y
+    # CONFIG_UNIX_DIAG is not set
+    # CONFIG_INET is not set
+    # CONFIG_NETWORK_SECMARK is not set
+    # CONFIG_NETWORK_PHY_TIMESTAMPING is not set
+    # CONFIG_NETFILTER is not set
+    # CONFIG_ATM is not set
+    # CONFIG_BRIDGE is not set
+    # CONFIG_VLAN_8021Q is not set
+    # CONFIG_LLC2 is not set
+    # CONFIG_ATALK is not set
+    # CONFIG_X25 is not set
+    # CONFIG_LAPB is not set
+    # CONFIG_PHONET is not set
+    # CONFIG_IEEE802154 is not set
+    # CONFIG_NET_SCHED is not set
+    # CONFIG_DCB is not set
+    # CONFIG_DNS_RESOLVER is not set
+    # CONFIG_BATMAN_ADV is not set
+    # CONFIG_VSOCKETS is not set
+    # CONFIG_NETLINK_DIAG is not set
+    # CONFIG_MPLS is not set
+    # CONFIG_NET_NSH is not set
+    # CONFIG_HSR is not set
+    # CONFIG_QRTR is not set
+    CONFIG_MAX_SKB_FRAGS=17
+    # CONFIG_CGROUP_NET_PRIO is not set
+    # CONFIG_CGROUP_NET_CLASSID is not set
+    CONFIG_NET_RX_BUSY_POLL=y
+    CONFIG_BQL=y
+
+    #
+    # Network testing
+    #
+    # end of Network testing
+    # end of Networking options
+
+    # CONFIG_HAMRADIO is not set
+    # CONFIG_CAN is not set
+    # CONFIG_BT is not set
+    # CONFIG_MCTP is not set
+    # CONFIG_WIRELESS is not set
+    # CONFIG_RFKILL is not set
+    # CONFIG_NET_9P is not set
+    # CONFIG_CAIF is not set
+    # CONFIG_NFC is not set
+    # CONFIG_PSAMPLE is not set
+    # CONFIG_NET_IFE is not set
+    # CONFIG_LWTUNNEL is not set
+    # CONFIG_FAILOVER is not set
+    # CONFIG_ETHTOOL_NETLINK is not set
 
     #
     # Device Drivers
@@ -913,6 +991,8 @@ in
     # CONFIG_MHI_BUS is not set
     # CONFIG_MHI_BUS_EP is not set
     # end of Bus devices
+
+    # CONFIG_CONNECTOR is not set
 
     #
     # Firmware Drivers
@@ -987,8 +1067,10 @@ in
     #
     # DRBD disabled because PROC_FS or INET not selected
     #
+    # CONFIG_BLK_DEV_NBD is not set
     # CONFIG_BLK_DEV_RAM is not set
     # CONFIG_CDROM_PKTCDVD is not set
+    # CONFIG_ATA_OVER_ETH is not set
     # CONFIG_BLK_DEV_UBLK is not set
 
     #
@@ -1068,6 +1150,8 @@ in
     # SCSI Transports
     #
     CONFIG_SCSI_SPI_ATTRS=y
+    # CONFIG_SCSI_FC_ATTRS is not set
+    # CONFIG_SCSI_ISCSI_ATTRS is not set
     # CONFIG_SCSI_SAS_ATTRS is not set
     # CONFIG_SCSI_SAS_LIBSAS is not set
     # CONFIG_SCSI_SRP_ATTRS is not set
@@ -1119,6 +1203,7 @@ in
     # CONFIG_MD is not set
     # CONFIG_TARGET_CORE is not set
     # CONFIG_MACINTOSH_DRIVERS is not set
+    # CONFIG_NETDEVICES is not set
 
     #
     # Input device support
@@ -1383,6 +1468,7 @@ in
 
     CONFIG_SERIAL_NONSTANDARD=y
     # CONFIG_N_HDLC is not set
+    # CONFIG_N_GSM is not set
     # CONFIG_NULL_TTY is not set
     CONFIG_SERIAL_DEV_BUS=y
     CONFIG_SERIAL_DEV_CTRL_TTYPORT=y
@@ -1468,6 +1554,7 @@ in
     #
     # PTP clock support
     #
+    # CONFIG_PTP_1588_CLOCK is not set
     CONFIG_PTP_1588_CLOCK_OPTIONAL=y
 
     #
@@ -1665,6 +1752,7 @@ in
     # CONFIG_SENSORS_ATK0110 is not set
     # CONFIG_SENSORS_ASUS_EC is not set
     CONFIG_THERMAL=y
+    # CONFIG_THERMAL_NETLINK is not set
     # CONFIG_THERMAL_STATISTICS is not set
     CONFIG_THERMAL_EMERGENCY_POWEROFF_DELAY_MS=0
     CONFIG_THERMAL_HWMON=y
@@ -1695,6 +1783,7 @@ in
     # end of ACPI INT340X thermal drivers
 
     # CONFIG_INTEL_TCC_COOLING is not set
+    # CONFIG_INTEL_HFI_THERMAL is not set
     # end of Intel thermal drivers
 
     # CONFIG_WATCHDOG is not set
@@ -2225,6 +2314,7 @@ in
     #
     # CONFIG_USB_MDC800 is not set
     # CONFIG_USB_MICROTEK is not set
+    # CONFIG_USBIP_CORE is not set
 
     #
     # USB dual-mode controller drivers
@@ -2456,6 +2546,7 @@ in
     # CONFIG_VFIO is not set
     # CONFIG_VIRT_DRIVERS is not set
     # CONFIG_VIRTIO_MENU is not set
+    # CONFIG_VDPA is not set
     # CONFIG_VHOST_MENU is not set
 
     #
@@ -2670,12 +2761,14 @@ in
     CONFIG_INOTIFY_USER=y
     # CONFIG_FANOTIFY is not set
     CONFIG_QUOTA=y
+    # CONFIG_QUOTA_NETLINK_INTERFACE is not set
     # CONFIG_QUOTA_DEBUG is not set
     CONFIG_QUOTA_TREE=y
     # CONFIG_QFMT_V1 is not set
     CONFIG_QFMT_V2=y
     CONFIG_QUOTACTL=y
     CONFIG_AUTOFS_FS=y
+    CONFIG_AUTOFS4_FS=y
     CONFIG_FUSE_FS=y
     CONFIG_CUSE=y
     # CONFIG_VIRTIO_FS is not set
@@ -2761,6 +2854,7 @@ in
     # CONFIG_SYSV_FS is not set
     # CONFIG_UFS_FS is not set
     # CONFIG_EROFS_FS is not set
+    CONFIG_NETWORK_FILESYSTEMS=y
     CONFIG_NLS=y
     CONFIG_NLS_DEFAULT="utf8"
     CONFIG_NLS_CODEPAGE_437=y
@@ -2833,6 +2927,8 @@ in
     # CONFIG_HARDENED_USERCOPY is not set
     # CONFIG_FORTIFY_SOURCE is not set
     # CONFIG_STATIC_USERMODEHELPER is not set
+    # CONFIG_SECURITY_TOMOYO is not set
+    # CONFIG_SECURITY_APPARMOR is not set
     # CONFIG_SECURITY_LOADPIN is not set
     # CONFIG_SECURITY_YAMA is not set
     # CONFIG_SECURITY_SAFESETID is not set
@@ -2887,6 +2983,7 @@ in
     CONFIG_CRYPTO_ACOMP2=y
     CONFIG_CRYPTO_MANAGER=y
     CONFIG_CRYPTO_MANAGER2=y
+    # CONFIG_CRYPTO_USER is not set
     CONFIG_CRYPTO_MANAGER_DISABLE_TESTS=y
     CONFIG_CRYPTO_NULL=y
     CONFIG_CRYPTO_NULL2=y
@@ -2912,6 +3009,7 @@ in
     #
     CONFIG_CRYPTO_AES=y
     # CONFIG_CRYPTO_AES_TI is not set
+    # CONFIG_CRYPTO_ANUBIS is not set
     # CONFIG_CRYPTO_ARIA is not set
     # CONFIG_CRYPTO_BLOWFISH is not set
     # CONFIG_CRYPTO_CAMELLIA is not set
@@ -2919,8 +3017,11 @@ in
     # CONFIG_CRYPTO_CAST6 is not set
     # CONFIG_CRYPTO_DES is not set
     # CONFIG_CRYPTO_FCRYPT is not set
+    # CONFIG_CRYPTO_KHAZAD is not set
+    # CONFIG_CRYPTO_SEED is not set
     # CONFIG_CRYPTO_SERPENT is not set
     # CONFIG_CRYPTO_SM4_GENERIC is not set
+    # CONFIG_CRYPTO_TEA is not set
     # CONFIG_CRYPTO_TWOFISH is not set
     # end of Block ciphers
 
@@ -2928,6 +3029,7 @@ in
     # Length-preserving ciphers and modes
     #
     # CONFIG_CRYPTO_ADIANTUM is not set
+    # CONFIG_CRYPTO_ARC4 is not set
     # CONFIG_CRYPTO_CHACHA20 is not set
     CONFIG_CRYPTO_CBC=y
     # CONFIG_CRYPTO_CFB is not set
@@ -3014,6 +3116,12 @@ in
     #
     # Userspace interface
     #
+    CONFIG_CRYPTO_USER_API=m
+    CONFIG_CRYPTO_USER_API_HASH=m
+    # CONFIG_CRYPTO_USER_API_SKCIPHER is not set
+    # CONFIG_CRYPTO_USER_API_RNG is not set
+    # CONFIG_CRYPTO_USER_API_AEAD is not set
+    CONFIG_CRYPTO_USER_API_ENABLE_OBSOLETE=y
     # end of Userspace interface
 
     CONFIG_CRYPTO_HASH_INFO=y
@@ -3090,6 +3198,7 @@ in
     CONFIG_BITREVERSE=y
     CONFIG_GENERIC_STRNCPY_FROM_USER=y
     CONFIG_GENERIC_STRNLEN_USER=y
+    CONFIG_GENERIC_NET_UTILS=y
     # CONFIG_CORDIC is not set
     # CONFIG_PRIME_NUMBERS is not set
     CONFIG_GENERIC_PCI_IOMAP=y
@@ -3110,6 +3219,7 @@ in
     CONFIG_CRYPTO_LIB_POLY1305_RSIZE=11
     # CONFIG_CRYPTO_LIB_POLY1305 is not set
     # CONFIG_CRYPTO_LIB_CHACHA20POLY1305 is not set
+    CONFIG_CRYPTO_LIB_SHA1=y
     CONFIG_CRYPTO_LIB_SHA256=y
     # end of Crypto library routines
 
@@ -3150,8 +3260,10 @@ in
     # CONFIG_DMA_API_DEBUG is not set
     # CONFIG_DMA_MAP_BENCHMARK is not set
     CONFIG_SGL_ALLOC=y
+    CONFIG_DQL=y
     CONFIG_GLOB=y
     # CONFIG_GLOB_SELFTEST is not set
+    CONFIG_NLATTR=y
     CONFIG_CLZ_TAB=y
     # CONFIG_IRQ_POLL is not set
     CONFIG_MPILIB=y
@@ -3240,6 +3352,9 @@ in
     #
     # Networking Debugging
     #
+    # CONFIG_NET_DEV_REFCNT_TRACKER is not set
+    # CONFIG_NET_NS_REFCNT_TRACKER is not set
+    # CONFIG_DEBUG_NET is not set
     # end of Networking Debugging
 
     #
@@ -3485,6 +3600,8 @@ in
     # CONFIG_TEST_BITOPS is not set
     # CONFIG_TEST_VMALLOC is not set
     # CONFIG_TEST_USER_COPY is not set
+    # CONFIG_TEST_BPF is not set
+    # CONFIG_TEST_BLACKHOLE_DEV is not set
     # CONFIG_FIND_BIT_BENCHMARK is not set
     # CONFIG_TEST_FIRMWARE is not set
     # CONFIG_TEST_SYSCTL is not set
