@@ -2,7 +2,7 @@
   description = "Clockwor Pi UConsole image";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.05";
+    nixpkgs.url = "github:the-argus/nixpkgs?ref=uconsole-fixes";
     nixos-hardware.url = "github:NixOS/nixos-hardware?rev=0a7b43b5952122a080ad965b3589f17d7dc383d3";
   };
 
@@ -34,6 +34,8 @@
       ];
     };
   in {
+    systemdMinimal = pkgs.systemdMinimal;
+
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {
         system = hostSystem;

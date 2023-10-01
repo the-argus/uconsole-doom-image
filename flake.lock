@@ -18,16 +18,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1695825837,
-        "narHash": "sha256-4Ne11kNRnQsmSJCRSSNkFRSnHC4Y5gPDBIQGjjPfJiU=",
-        "owner": "nixos",
+        "lastModified": 1696119408,
+        "narHash": "sha256-SRL+pMK7V99TJ6VsJh2gU1ZZxvVswORudow80qLsybo=",
+        "owner": "the-argus",
         "repo": "nixpkgs",
-        "rev": "5cfafa12d57374f48bcc36fda3274ada276cf69e",
+        "rev": "efb5877a1a5196b57e1e72a600790bd490f4a2f2",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-23.05",
+        "owner": "the-argus",
+        "ref": "uconsole-fixes",
         "repo": "nixpkgs",
         "type": "github"
       }
