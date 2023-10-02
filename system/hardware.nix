@@ -10,6 +10,8 @@ in {
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  hardware.deviceTree.filter = lib.mkForce null;
+
   boot.supportedFilesystems = lib.mkForce ["ext4" "vfat"];
 
   # nix.settings.system-features = [
