@@ -1164,16 +1164,18 @@ in
     # end of SCSI device support
 
     CONFIG_ATA=y
+    CONFIG_SATA_HOST=y
     CONFIG_PATA_TIMINGS=y
     CONFIG_ATA_VERBOSE_ERROR=y
     CONFIG_ATA_FORCE=y
     CONFIG_ATA_ACPI=y
     # CONFIG_SATA_ZPODD is not set
+    CONFIG_SATA_PMP=y
 
     #
     # Controllers with non-SFF native interface
     #
-    # CONFIG_SATA_AHCI_PLATFORM is not set
+    CONFIG_SATA_AHCI_PLATFORM=m
     # CONFIG_AHCI_DWC is not set
     # CONFIG_AHCI_CEVA is not set
     CONFIG_ATA_SFF=y
@@ -2768,7 +2770,6 @@ in
     CONFIG_QFMT_V2=y
     CONFIG_QUOTACTL=y
     CONFIG_AUTOFS_FS=y
-    CONFIG_AUTOFS4_FS=y
     CONFIG_FUSE_FS=y
     CONFIG_CUSE=y
     # CONFIG_VIRTIO_FS is not set
