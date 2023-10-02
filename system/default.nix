@@ -16,16 +16,12 @@ in {
       ./packages.nix
       ./minimize.nix
       ./nix.nix
+      ./sd-image.nix
     ]
     ++ (lib.optionals usesZsh [./zsh.nix]);
 
   system.stateVersion = "23.05";
   time.timeZone = lib.mkDefault "America/New_York";
-
-  # kernel version
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   # console
   # Select internationalisation properties.

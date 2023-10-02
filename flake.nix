@@ -15,6 +15,8 @@
     targetSystem = "riscv64-linux";
     pkgs = import nixpkgs {
       config = {
+        # raspberry pi kernel isnt supposed to build on x86_64
+        allowUnsupportedSystem = true;
         replaceStdenv = {pkgs, ...}: pkgs.llvmPackages_14.stdenv;
       };
       localSystem = {
@@ -28,28 +30,17 @@
       overlays = import ./overlays.nix;
     };
   in {
-    systemdMinimal = pkgs.systemdMinimal;
-
-    important = pkgs.linkFarm "important" [
-      {
-        path = "${pkgs.llvm}";
-        name = "llvm";
-      }
-      {
-        path = "${pkgs.linux}";
-        name = "linux";
-      }
-    ];
-
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {
         system = hostSystem;
         inherit pkgs;
-        specialArgs.localConfig = import ./config.nix;
+        specialArgs = {
+          inherit nixpkgs;
+          localConfig = import ./config.nix;
+        };
         modules = [
           ./system
           nixos-hardware.nixosModules.raspberry-pi-4
-          (import "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-riscv64-qemu.nix")
         ];
       };
     };

@@ -21,16 +21,25 @@
   in rec {
     linuxKernel = override super.linuxKernel {
       kernels = let
-        packageName = "linux_xanmod_latest";
+        packageName = "linux_rpi4";
         src = super.linuxKernel.kernels.${packageName}.src;
         version = super.linuxKernel.kernels.${packageName}.version;
+        versionPrefix = "6.1.21";
       in
         override super.linuxKernel.kernels {
           ${packageName} =
             (super.linuxKernel.manualConfig {
               stdenv = super.gccStdenv;
               inherit src version;
-              modDirVersion = "${version}-${super.lib.strings.toUpper super.localConfig.hostname}-xanmod1";
+              modDirVersion = "${
+                if super.lib.strings.hasPrefix versionPrefix version
+                then versionPrefix
+                else
+                  abort "versionPrefix ${versionPrefix} not accurate to "
+                  "version ${version}. You have probably updated and "
+                  "need to modify the hardcoded value of versionPrefix "
+                  "in this file."
+              }-${super.lib.strings.toUpper super.localConfig.hostname}";
               inherit (super) lib;
               configfile = super.localPackages.kernelconfig;
               allowImportFromDerivation = true;
