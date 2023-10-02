@@ -34,11 +34,7 @@
               modDirVersion = "${
                 if super.lib.strings.hasPrefix versionPrefix version
                 then versionPrefix
-                else
-                  abort "versionPrefix ${versionPrefix} not accurate to "
-                  "version ${version}. You have probably updated and "
-                  "need to modify the hardcoded value of versionPrefix "
-                  "in this file."
+                else abort "versionPrefix ${versionPrefix} not accurate to version ${version}. You have probably updated and need to modify the hardcoded value of versionPrefix in this file."
               }-${super.lib.strings.toUpper super.localConfig.hostname}";
               inherit (super) lib;
               configfile = super.localPackages.kernelconfig;
