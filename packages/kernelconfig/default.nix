@@ -1188,7 +1188,7 @@ in
     # CONFIG_SCSI_DH is not set
     # end of SCSI device support
 
-    CONFIG_ATA=y
+    CONFIG_ATA=m
     CONFIG_SATA_HOST=y
     CONFIG_PATA_TIMINGS=y
     CONFIG_ATA_VERBOSE_ERROR=y
