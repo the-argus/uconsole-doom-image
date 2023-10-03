@@ -8,6 +8,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixos-hardware,
     flake-utils,
@@ -40,6 +41,12 @@
         overlays = import ./overlays.nix;
       };
     in {
+      packages = {
+        llvm = pkgs.llvm;
+        default = self.packages.${system}.image;
+        image = self.nixosConfigurations.${system}.default.config.system.build.sdImage;
+      };
+
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
           inherit system;
