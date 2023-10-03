@@ -19,6 +19,11 @@ in {
       ./sd-image.nix
     ]
     ++ (lib.optionals usesZsh [./zsh.nix]);
+  
+  # disable nsncd because it doesnt seem to build properly with musl. it wants
+  # to link to a gcc wrapper? something something glibc. i didn't look to far
+  # into it
+  services.nscd.enableNsncd = false;
 
   system.stateVersion = "23.05";
   time.timeZone = lib.mkDefault "America/New_York";
